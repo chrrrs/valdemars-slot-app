@@ -1,8 +1,9 @@
-// get email and turn into id, store id in localStorage
+// get username from form and game data from JSON and store locally
 var user = document.querySelector('#signUser');
 
 function store() {
   localStorage.setItem('user', user.value);
+  localStorage.setItem('game', JSON.stringify(routesLocal));
 }
 
 // display JSON stored code
@@ -57,8 +58,44 @@ if(modal) {
 };
 
 
-// get JSON data
-var request = new XMLHttpRequest();
-   request.open("GET", "../users.json", false);
-   request.send(null)
-   var my_JSON_object = JSON.parse(request.responseText);
+// map selector
+var imgSlider = document.querySelector('#mapSlider');
+var basement = document.querySelector('#basement');
+var groundFloor = document.querySelector('#ground-floor');
+var firstFloor = document.querySelector('#first-floor');
+var secondFloor = document.querySelector('#second-floor');
+
+
+if(imgSlider) {
+  imgSlider.addEventListener('change', function() {
+    if(imgSlider.value == 0) {
+      basement.style = "display: block";
+      groundFloor.style = "display: none";
+      firstFloor.style = "display: none";
+      secondFloor.style = "display: none";
+    } else if (imgSlider.value == 1) {
+      basement.style = "display: none";
+      groundFloor.style = "display: block";
+      firstFloor.style = "display: none";
+      secondFloor.style = "display: none";
+    } else if (imgSlider.value == 2) {
+      basement.style = "display: none";
+      groundFloor.style = "display: none";
+      firstFloor.style = "display: block";
+      secondFloor.style = "display: none";
+    } else if (imgSlider.value == 3) {
+      basement.style = "display: none";
+      groundFloor.style = "display: none";
+      firstFloor.style = "display: none";
+      secondFloor.style = "display: block";
+    }
+  });
+}
+
+// Save game data locally
+var gameRequest = new XMLHttpRequest();
+gameRequest.open("GET", "../users.json", false);
+gameRequest.send(null)
+var JSONobj = JSON.parse(gameRequest.responseText);
+
+var routesLocal = JSONobj[0]['routes'];

@@ -2,18 +2,48 @@
 
   include('../functions.php');
 
-  $answer = getUser();
+  parse_str($_SERVER['QUERY_STRING'], $qs);
+  $routeId = $qs['route'];
+  $questionId = $qs['question'];
+  $answerId = $qs['answer'];
+  $data = getData();
 
-  if($_POST[0] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: child_trophy.php');
-  } else if ($_POST[1] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: connect.php');
-  } else if ($_POST[2] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: select_route.php');
-  } else if ($_POST[3] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: victory.php');
-  } else {
-    header('Location: question.php');
+  $routes = $data['app_routes'];
+
+  $route = null;
+  $question = null;
+
+  foreach($routes as $struct) {
+    if($struct['id'] == $routeId) {
+      $route = $struct;
+      break;
+    }
   }
 
+  $questions = $route['questions'];
+  foreach($questions as $struct) {
+    if($struct['id'] == $questionId) {
+      $question = $struct;
+      break;
+    }
+  }
+
+
+  if($answerId == $question['answer']) {
+    $location = 'question.php?route=' . $route['id'];
+    header('Location: ' . $location);
+  } 
+
+
+
 ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <?php echo print_r($qs); ?>
+  </body>
+</html>

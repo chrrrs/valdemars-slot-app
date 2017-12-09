@@ -255,11 +255,28 @@ input:checked + .slider:before {
 }
 
 #map-container {
-  width: 12rem;
+  display: flex;
+  align-items: center;
 }
 
 #map-container img {
-  width: 12rem;
+  width: 18rem;
+}
+
+#basement {
+  display: none;
+}
+
+#ground-floor {
+  display: block;
+}
+
+#first-floor {
+  display: none;
+}
+
+#second-floor {
+  display: none;
 }
 
 #mapSlider {
@@ -292,6 +309,7 @@ input:checked + .slider:before {
   background: #4A89DC;
   cursor: pointer;
 }
+
 
 #rulesModal {
   display: none;
@@ -417,6 +435,20 @@ input:checked + .slider:before {
   background-color: #ffffff;
 }
 
+/* Select route */
+
+#route-card {
+  width: 75%;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 0 .5rem #555555;
+}
+
+#route-card a {
+  box-shadow: 0 0 0 #ffffff;
+}
+
 /* Question Children */
 #questions-main-wrapper {
   background-color: #4A89DC;
@@ -501,6 +533,18 @@ input:checked + .slider:before {
 .child-trophy i {
   color: #FFCE54;
   font-size: 3rem;
+}
+
+#route-select-button {
+  background-color: #ffffff;
+  border-radius: 5rem;
+  width: 75%;
+  box-shadow: 0 0 .3rem #bdbdbd;
+  margin-top: 2rem;
+  padding: 1rem .5rem;
+  text-align: center;
+  text-decoration: none;
+  color: #333333;
 }
 
 /* Footer App */

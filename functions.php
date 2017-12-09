@@ -11,7 +11,7 @@ function getData() {
 function getUser() {
   $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/valdemars_slot_app/users.json');
   $data = json_decode($json, true);
-  return $data;
+  return $data[0];
 }
 
 //create a new user to user.json

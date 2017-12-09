@@ -26,7 +26,10 @@
         <i class="fa fa-trophy"></i>
       </div>
 
+      <a href="select_route.php" id="route-select-button">Vælg ny rute</a>
     </div>
+
+
     <?php
 
     include('../assets/footer_trophy_child.php');

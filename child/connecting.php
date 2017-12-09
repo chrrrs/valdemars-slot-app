@@ -5,8 +5,10 @@
   $userCode = getUser();
   $connectCode = $_POST['connectCode'];
 
-  if($connectCode === $userCode) {
-    header('Location: question.php');
+  if($connectCode === $userCode[0]['code']) {
+    header('Location: select_route.php');
+  } else {
+    header('Location: connect.php');
   }
 
 ?>

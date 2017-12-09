@@ -19,12 +19,12 @@
       </div>
 
       <div id="map-selection-container">
-        <input type="range" name="mapWheel" min="0" max="4" value="1" id="mapSlider">
+        <input type="range" name="mapWheel" min="0" max="3" value="1" id="mapSlider">
         <div id="map-container">
-          <img src="../assets/images/basement.svg" alt="Kælder etage">
-          <img src="../assets/images/ground_floor.svg" alt="Stue etage" style="display: none;">
-          <img src="../assets/images/first_floor.svg" alt="Første etage" style="display: none;">
-          <img src="../assets/images/second_floor.svg" alt="Anden etage" style="display: none;">
+          <img src="../assets/images/basement.svg" alt="Kælder etage" id="basement">
+          <img src="../assets/images/ground_floor.svg" alt="Stue etage" id="ground-floor">
+          <img src="../assets/images/first_floor.svg" alt="Første etage" id="first-floor">
+          <img src="../assets/images/second_floor.svg" alt="Anden etage" id="second-floor">
         </div>
       </div>
 
