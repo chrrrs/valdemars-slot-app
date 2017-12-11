@@ -24,6 +24,14 @@ body {
   justify-content: center;
 }
 
+.back-button {
+  color: #4A89DC;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+}
+
 /* Parent or child select */
 #select-wrapper a {
   border-radius: 1rem;
@@ -83,6 +91,41 @@ body {
 
 #login-email a {
   color: #333333;
+}
+
+#unavailableModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+#unavailableModal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  margin-top: 50%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: .5rem;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Login Email */
@@ -255,11 +298,28 @@ input:checked + .slider:before {
 }
 
 #map-container {
-  width: 12rem;
+  display: flex;
+  align-items: center;
 }
 
 #map-container img {
-  width: 12rem;
+  width: 18rem;
+}
+
+#basement {
+  display: none;
+}
+
+#ground-floor {
+  display: block;
+}
+
+#first-floor {
+  display: none;
+}
+
+#second-floor {
+  display: none;
 }
 
 #mapSlider {
@@ -293,6 +353,7 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+
 #rulesModal {
   display: none;
   position: fixed;
@@ -314,19 +375,6 @@ input:checked + .slider:before {
   border-radius: .5rem;
 }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover, .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 /* Parents Trophy Viewer */
 #parent-trophy-wrapper {
   display: flex;
@@ -346,9 +394,13 @@ input:checked + .slider:before {
 }
 
 .parent-trophy-container span {
-  background-color: #f1f1f1;
-  padding: 2.3rem 1rem;
+  background-color: #DA4453;
+  padding: 1.6rem 1rem;
   border-radius: .5rem 0 0 .5rem;
+}
+
+.parent-trophy-container span i {
+  color: #FFCE54;
 }
 
 .parent-trophy-content {
@@ -365,20 +417,13 @@ input:checked + .slider:before {
   margin-bottom: 0;
 }
 
-.locked {
-  background-color: rgba(0,0,0,0.5);
+#parent-locked {
+  background-color: #bdbdbd;
 }
 
-.locked span {
-  background-color: rgba(0,0,0,0.25);
+#parent-locked i {
+  color: #333333;
 }
-
-.active-locked {
-  font-size: 1.25rem;
-  z-index: 1;
-  align-self: center;
-}
-
 /* Connect Child */
 #connect-wrapper {
   align-content: center;
@@ -417,6 +462,51 @@ input:checked + .slider:before {
   background-color: #ffffff;
 }
 
+/* Select route */
+#select-route-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 2rem;
+}
+
+#select-route-wrapper a {
+  border-radius: 1rem;
+  box-shadow: 0 0 .5rem #bdbdbd;
+  padding: .5rem 1rem;
+  margin-top: 1rem;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  color: #333333;
+}
+
+#route-card {
+  width: 75%;
+  background-color: #ffffff;
+  border-radius: .5rem;
+  box-shadow: 0 0 .5rem #bdbdbd;
+  margin: 1rem 0;
+}
+
+#route-card h3 {
+  margin: 0;
+}
+
+#route-card p {
+  margin: 0;
+}
+
+#route-card a {
+  box-shadow: 0 0 0 #ffffff;
+}
+
+#select-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Question Children */
 #questions-main-wrapper {
   background-color: #4A89DC;
@@ -428,8 +518,10 @@ input:checked + .slider:before {
   top: 12.5%;
 }
 
-#card-count {
+#card-fail {
   float: right;
+  font-weight: 700;
+  color: #DA4453;
 }
 
 #card {
@@ -440,19 +532,22 @@ input:checked + .slider:before {
   box-shadow: 0 0 .5rem #555555;
 }
 
-#card form {
+#card div {
   display: flex;
   flex-wrap: wrap;
 }
 
-#card form button {
+#card a {
   width: 45%;
   margin: 2.5% 2.5%;
   border-radius: .5rem;
   padding: 1rem;
   border: none;
   background-color: #ffffff;
+  color: #333333;
   box-shadow: 0 0 .3rem #bdbdbd;
+  text-decoration: none;
+  text-align: center;
 }
 
 #clue-container {
@@ -469,6 +564,20 @@ input:checked + .slider:before {
   padding: .5rem;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: .25rem;
+}
+
+/* child victory */
+#child-victory-main-wrapper {
+  background-color: #967ADC;
+}
+
+#child-victory-wrapper {
+  margin: 0 2rem;
+}
+
+#child-victory-wrapper i {
+  color: #FFCE54;
+  font-size: 5rem;
 }
 
 /* Child Trophy Viewer */
@@ -501,6 +610,27 @@ input:checked + .slider:before {
 .child-trophy i {
   color: #FFCE54;
   font-size: 3rem;
+}
+
+.locked-child {
+  background-color: #bdbdbd;
+  padding: 1.3rem 1.9rem;
+}
+
+.locked-child i {
+  color: #333333;
+}
+
+#route-select-button {
+  background-color: #ffffff;
+  border-radius: 5rem;
+  width: 75%;
+  box-shadow: 0 0 .3rem #bdbdbd;
+  margin-top: 2rem;
+  padding: 1rem .5rem;
+  text-align: center;
+  text-decoration: none;
+  color: #333333;
 }
 
 /* Footer App */

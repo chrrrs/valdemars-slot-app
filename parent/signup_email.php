@@ -6,6 +6,7 @@
 
   <div id="signup-main-wrapper">
     <div id="signup-wrapper" class="wrapper-flex">
+      <a href="login_email.php" class="back-button"><i class="fa fa-angle-left"></i></a>
       <h1>Lav en bruger</h1>
 
       <form action="signup_validator.php" method="post">
@@ -16,7 +17,7 @@
         <button type="submit" name="signupButton" onclick="store()">Lav bruger</button>
         <div>
           <input type="checkbox" name="signupRadioBtn">
-          <label for="signupRadioBtn">hello</label>
+          <label for="signupRadioBtn">Brugerbetingelser</label>
         </div>
       </form>
     </div>

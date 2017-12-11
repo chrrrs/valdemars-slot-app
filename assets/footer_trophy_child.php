@@ -1,5 +1,5 @@
     <footer>
-      <a href="question.php" class="footer-app-container">
+      <a href="select_route.php" class="footer-app-container">
         <i class="fa fa-gamepad"></i>
         <p>Tilbage til spil</p>
       </a>

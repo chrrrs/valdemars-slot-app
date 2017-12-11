@@ -12,8 +12,5 @@
     </div>
   </div>
 
-<?php
-
-  include('./assets/footer_standard.php');
-
-?>
+  </body>
+</html>

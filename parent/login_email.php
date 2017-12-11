@@ -6,6 +6,7 @@
 
   <div id="login-main-wrapper">
     <div id="login-wrapper" class="wrapper-flex">
+      <a href="./login_options.php" class="back-button"><i class="fa fa-angle-left"></i></a>
       <h1>Login</h1>
 
       <form action="login_validate.php" method="post">

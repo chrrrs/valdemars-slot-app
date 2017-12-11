@@ -2,18 +2,86 @@
 
   include('../functions.php');
 
-  $answer = getUser();
+  parse_str($_SERVER['QUERY_STRING'], $qs);
+  $routeId = $qs['route'];
+  $questionId = $qs['question'];
+  $answerId = $qs['answer'];
+  $data = getData();
 
-  if($_POST[0] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: child_trophy.php');
-  } else if ($_POST[1] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: connect.php');
-  } else if ($_POST[2] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: select_route.php');
-  } else if ($_POST[3] === $answer['routes'][0]['question'][0]['answer']) {
-    header('Location: victory.php');
-  } else {
-    header('Location: question.php');
+
+  $routes = $data['app_routes'];
+
+  $route = null;
+  $question = null;
+
+  foreach($routes as $struct) {
+    if($struct['id'] == $routeId) {
+      $route = $struct;
+      break;
+    }
   }
+
+  $questions = $route['questions'];
+  foreach($questions as $struct) {
+    if($struct['id'] == $questionId) {
+      $question = $struct;
+      break;
+    }
+  }
+
+
+  if($answerId == $question['answer']) {
+
+    $userData = getUser();
+    $userQuestions = null;
+    $hasFoundUserRoute = false;
+    $hasFoundUserQuestion = false;
+
+    $userRoutes = $userData['routes'];
+    foreach($userData['routes'] as $i => $userRoute) {
+      if($userRoute['id'] == $route['id']) {
+        $userQuestions = $userRoute['questions'];
+
+        $hasFoundUserRoute = true;
+
+        foreach($userQuestions as $userQuestion) {
+          if($userQuestion['id'] == $question['id']) {
+            $userQuestions['isAnswered'] = true;
+
+            $hasFoundUserQuestion = true;
+          }
+        }
+        if(!$hasFoundUserQuestion) {
+          $newQuestion = (object)["id" => $question['id'], "isAnswered" => true, "answer" => $answerId];
+          array_push($userData['routes'][$i]['questions'], $newQuestion);
+          $users[] = $userData;
+          putUser($users);
+        }
+      }
+    }
+
+    if(!$hasFoundUserRoute) {
+
+      $newQuestion = (object)["id" => $question['id'], "isAnswered" => true, "answer" => $answerId];
+      $newRoute = (object)["id" => $route['id'], "questions"=> [$newQuestion]];
+
+      array_push($userData['routes'], $newRoute);
+      $users[] = $userData;
+      putUser($users);
+    }
+
+
+
+    $location = 'question.php?route=' . $route['id'];
+    if($question['isFinal']) {
+      $location = 'victory.php';
+    }
+    header('Location: ' . $location);
+  } else {
+    $location = 'question.php?route=' . $route['id'] . '&error=true';
+    header('Location: ' . $location);
+  }
+
+
 
 ?>
